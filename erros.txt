@@ -1,0 +1,85 @@
+  1   |def __test__():
+  2   |num_real <- +0.14e-8
+  3   |return num_real
+  4   |
+  5   |programa
+  6   |numero: nota_1
+  7   |imprima("Digite 3 nros
+       ---------ˆ
+Erro léxico na linha 7 coluna 10
+  8   |leia(n)
+  9   |media <- __test__(nota_1, nota_1)
+  10   |/* caso media >= 7 entao
+  11   |imprima("aprovado")
+  12   |fim_caso*/ imprima(média)
+  13   |imprima("Uma cadeia bonita"+ "-10"++200)
+  14   |fim_programa
+
+--------------------------------------
+  1   |def __test__():
+  2   |num_real <- +0.14e-8
+  3   |return num_real
+  4   |
+  5   |programa
+  6   |numero: nota_1
+  7   |imprima("Digite 3 nros
+  8   |leia(n)
+       ------ˆ
+Erro léxico na linha 8 coluna 7
+  9   |media <- __test__(nota_1, nota_1)
+  10   |/* caso media >= 7 entao
+  11   |imprima("aprovado")
+  12   |fim_caso*/ imprima(média)
+  13   |imprima("Uma cadeia bonita"+ "-10"++200)
+  14   |fim_programa
+
+--------------------------------------
+  1   |def __test__():
+  2   |num_real <- +0.14e-8
+  3   |return num_real
+  4   |
+  5   |programa
+  6   |numero: nota_1
+  7   |imprima("Digite 3 nros
+  8   |leia(n)
+  9   |media <- __test__(nota_1, nota_1)
+  10   |/* caso media >= 7 entao
+  11   |imprima("aprovado")
+  12   |fim_caso*/ imprima(média)
+       --------------------ˆ
+Erro léxico na linha 12 coluna 21
+  13   |imprima("Uma cadeia bonita"+ "-10"++200)
+  14   |fim_programa
+
+--------------------------------------
+  1   |def __test__():
+  2   |num_real <- +0.14e-8
+  3   |return num_real
+  4   |
+  5   |programa
+  6   |numero: nota_1
+  7   |imprima("Digite 3 nros
+  8   |leia(n)
+  9   |media <- __test__(nota_1, nota_1)
+  10   |/* caso media >= 7 entao
+  11   |imprima("aprovado")
+  12   |fim_caso*/ imprima(média)
+       ---------------------ˆ
+Erro léxico na linha 12 coluna 22
+  13   |imprima("Uma cadeia bonita"+ "-10"++200)
+  14   |fim_programa
+
+--------------------------------------
+
+
++-------+--------------------+
+|  POS  |        ERROS       |
++-------+--------------------+
+|  1    |         "Digite 3 nros |
++-------+--------------------+
+|  2    |         n          |
++-------+--------------------+
+|  3    |         m          |
++-------+--------------------+
+|  4    |         é          |
++-------+--------------------+
