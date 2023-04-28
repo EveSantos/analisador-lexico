@@ -1,4 +1,4 @@
-# analisador-lexico
+# Analisador Lexico
 
 Esse projeto consiste na implementação de um analisador léxico para a materia de compiladores utilizando automatos de estados. 
 Esse programa interpreta uma linguagem que foi criada previamente pela professora da disciplina.
@@ -17,8 +17,8 @@ O analisador léxico deve:
     - Identifica um único token na entrada
     - Retorna o código do token e, se for o caso, uma referência à sua entrada na tabela de símbolos. 
 
-1. Especificação da linguagem cic_2023.1
-1.1 Tipo de dados
+##1. Especificação da linguagem cic_2023.1
+###1.1 Tipo de dados
   Há dois tipos de dados em cic_2023.1: número e cadeia.
   Um número consiste de ao menos um dígito (quando houver ponto, ao menos um dígito antes e
   um dígito depois do ponto), com sinal, ponto opcional e expoente opcionais. Quando expoente
@@ -107,9 +107,9 @@ Atribuição                      | <-
   cadeia: maior, menor // O maior e o menor dos tres
   Comentários de bloco são demarcados pelas sequências /* e */, por exemplo:
 
-    ** /* Este programa le tres numeros * **
-    ** * e os coloca em ordem crescente */ **
-    ** numero: x, y, z, maior, menor **
+    **/* Este programa le tres numeros ***
+    *** e os coloca em ordem crescente */**
+    **numero: x, y, z, maior, menor**
 
   Comentários devem ser ignorados pelo analisador léxico. Ao encontrar o início de comentário de
   bloco, o analisador deve consumir e descartar caracteres da entrada até encontrar o final do
