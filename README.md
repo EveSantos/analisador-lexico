@@ -17,38 +17,41 @@ O analisador léxico deve:
     - Identifica um único token na entrada
     - Retorna o código do token e, se for o caso, uma referência à sua entrada na tabela de símbolos. 
 
-##1. Especificação da linguagem cic_2023.1
-###1.1 Tipo de dados
+## 1. Especificação da linguagem cic_2023.1
+### 1.1 Tipo de dados
   Há dois tipos de dados em cic_2023.1: número e cadeia.
   Um número consiste de ao menos um dígito (quando houver ponto, ao menos um dígito antes e
   um dígito depois do ponto), com sinal, ponto opcional e expoente opcionais. Quando expoente
   está presente, o número apenas pode ter 1 algarismo antes do .(ponto). Exemplos de tokens
+  
   TK_NUMERO: -15, +001, +1234567890, -0.134e-7, +3.4564e+10
   Não são permitidos: 13 (falta sinal), -.45 (precisa ter 1 dígito antes do .), +2523.4e-10 (quando
   exponencia, apenas 1 dígito antes do ponto) ou +123. (quando houver ., ao menos um dígito
   depois do .)
+  
   Uma cadeia é uma sequência de caracteres delimitada por aspas duplas e totalmente contida em
   uma única linha. Uma cadeia aberta em uma linha e fechada em outra deve gerar erro léxico.
   Exemplos de tokens tk_CADEIA: “-.15” , “cic 2023\n” e “”.
   No trecho de programa a seguir, +2 é uma constante do tipo número e “Media=” uma constante do
   tipo cadeia; seu analisador léxico deve reconhecê-los como tais.
-    **media <- soma/+2**
-    **escreva (“Media=”)**
-    **escreva(media)**
+  
+    media <- soma/+2
+    escreva (“Media=”)
+    escreva(media)
 
-1.2 Identificadores para nomes de variáveis
+### 1.2 Identificadores para nomes de variáveis
   Identificadores (nomes de variáveis) devem começar com uma letra e conter apenas letras, dígitos
   e sublinhado, devem ter no mínimo 2 caracteres. Letras acentuadas não são permitidas.
   Exemplos permitidos: v_1, vAr, Var, v_
   Exemplos não permitidos: _var, 3var, x, vár
-  1.3 Identificadores para nomes de funções
+### 1.3 Identificadores para nomes de funções
   Identificadores (nomes de funções) devem começar e terminar com 2 sublinhados, conter pelo
   menos 1 letra e pode conter ou não dígitos. Não devem contem outro sublinhado. Exemplo:
-    **def __funcao1__():**
-    **return 10**
-    **my_var= __funcao1()**
+    def __funcao1__():
+    return 10
+    my_var= __funcao1()
 
-1.4. Comandos
+### 1.4. Comandos
   O comando imprima aceita variáveis ou constantes como argumentos; leia aceita apenas
   variáveis. Contudo, cada comando leia ou imprima aceita apenas um argumento. Assim, a
   impressão de texto e valores numéricos misturados deve ser feita com vários comandos imprima.
@@ -56,19 +59,20 @@ O analisador léxico deve:
   arquivos de teste.
   Seguem os comandos da linguagem, em negrito, as palavras reservadas, operadores e
   delimitadores.
+  ```
+  programa comandos fim_programa
+  caso expressao entao comandos fim_caso
+  caso expressao entao comandos senao comandos fim_caso
+  leia(identificador)
+  imprima(identificador)
+  imprima(numero)
+  imprima(cadeia)
+  identificador <- expressao
+  def identificador_funcao (identificadores|numeros|cadeias):
+   comandos return identificador|numero|cadeia 
+  ```
 
-  **programa comandos fim_programa**
-  **caso expressao entao comandos fim_caso**
-  **caso expressao entao comandos senao comandos fim_caso**
-  **leia(identificador)**
-  **imprima(identificador)**
-  **imprima(numero)**
-  **imprima(cadeia)**
-  **identificador <- expressao**
-  **def identificador_funcao (identificadores|numeros|cadeias):**
-   **comandos return identificador|numero|cadeia**
-
-1.5. Maiúsculas, minúsculas e acentuação
+### 1.5. Maiúsculas, minúsculas e acentuação
   Nomes de identificadores: Letras maiúsculas e minúsculas são permitidas e distinguíveis: media,
   Media, MeDiA e MEDIA devem ser tratados como identificadores diferentes. Rejeite acentos no
   reconhecimento de identificadores: media deve ser aceito como identificador, mas média deve
@@ -77,22 +81,25 @@ O analisador léxico deve:
   CaSo e CASO são formas válidas do mesmo comando, devendo ser reconhecidos como a
   mesma palavra reservada.
   
-1.6 Operadores
+### 1.6 Operadores
 
 Unários Binários
 
 Aritméticos e lógicos |() - nao | +  -  *  /  e  ou
+
 Relacionais                     | <> == >= <= > <
+
 Atribuição                      | <-
 
-1.7 Declaração de variáveis
-
-  **numero : identificador**
-  **numero : identificador, ..., identicador**
-  **cadeia : identificador**
-  **cadeia : identificador, ..., identicador**
+### 1.7 Declaração de variáveis
+ ```
+  numero : identificador
+  numero : identificador, ..., identicador
+  cadeia : identificador
+  cadeia : identificador, ..., identicador
+  ```
   
-1.8 Delimitadores, operadores e brancos
+### 1.8 Delimitadores, operadores e brancos
   Devem ser identificados por tokens próprios os delimitadores para dois pontos (:) e vírgula (,).
   Operadores também devem ser identificados por tokens próprios.
   Branco é um termo que se aplica tanto ao espaço (‘ ’) quanto ao tab (‘\t’), brancos não geram
@@ -100,16 +107,16 @@ Atribuição                      | <-
   um delimitador (,) no lugar do branco teria o mesmo efeito.
   Uma sequência de espaços e tabs, em qualquer combinação, é equivalente a um único branco.
 
-1.9 Comentários
+### 1.9 Comentários
   Existem dois tipos de comentários: de linha e de bloco. Comentários de linha são iniciados pelos
   caracteres // e terminam no final da linha, por exemplo:
   numero: x, y, z // Tres valores a serem ordenados
   cadeia: maior, menor // O maior e o menor dos tres
   Comentários de bloco são demarcados pelas sequências /* e */, por exemplo:
 
-    **/* Este programa le tres numeros ***
-    *** e os coloca em ordem crescente */**
-    **numero: x, y, z, maior, menor**
+    /* Este programa le tres numeros *
+    * e os coloca em ordem crescente */
+    numero: x, y, z, maior, menor
 
   Comentários devem ser ignorados pelo analisador léxico. Ao encontrar o início de comentário de
   bloco, o analisador deve consumir e descartar caracteres da entrada até encontrar o final do
